@@ -5,8 +5,27 @@ import re
 from urllib2 import urlopen
 
 TARGETS = [
-    ('$3b2o$3b2o2$2bob3o$3bo!', '7o$3o2b2o$3o2b2o$7o$2obo$4b3o!'),
-    ('$b2obo$b2obo$5bo$b2obo$2bo!', '5o$o2bobo$o2bobo$5o$o2bo$2obo!'),
+    # eater2 variants
+    ('$b2obo$b2ob2o2$b2obo$2bo!', '6o$o2bobo$o2bo$6o$o2bo$2obo!'), # canonical
+    ('$b2obo$b2obo$5bo$b2obo$2bo!', '5o$o2bobo$o2bobo$5o$o2bo$2obo!'), # smallest bounding box
+    ('4bo$b2o2bo$b2obo$4bo$ob2o$bo!', '4o$o2b2o$o2bobo$4obo$bo2b2o$2b3o!'), # hedonismbot
+    ('4bo$b2o2bo$b2obo$4bo$b2obo$bo!', '4o$o2b2o$o2bobo$4obo$o2bobo$ob2o!'), # thinker
+    ('4bo$b2o2bo$b2obo$4bo$b2obo$2bo!', '4o$o2b2o$o2bobo$4obo$o2bobo$2obo!'), # bored
+    ('4bo$b2o2bo$b2obo$4bo$b2obo!', '4o$o2b2o$o2bobo$4obo$o2bobo$b2o!'), # jordan
+    ('4bo$b2o2bo$b2obo$4bo$b2o$3bo!', '4o$o2b2o$o2bobo$4obo$o2b2o$b2o!'), # triskelion
+    ('$b2obo$b2ob2o2$ob2o$2bo!', '6o$o2bobo$o2bo$6o$bo2bo$bob2o!'), # boulders
+    ('$b2obo$b2obo$5bo$ob2o$2bo!', '5o$o2bobo$o2bobo$5o$bo2bo$bob2o!'), # waiter
+
+    # eater2 precursors
+    ('$4bo$4b2o2$b2obo$2bo!', '3b3o$3bobo$3bo$6o$o2bo$2obo!'), # canonical
+    ('$4bo$4bo$5bo$b2obo$2bo!', '3b2o$3bobo$3bobo$5o$o2bo$2obo!'), # smallest bounding box
+    ('4bo$5bo$4bo$4bo$ob2o$bo!', '3bo$3b2o$3bobo$4obo$bo2b2o$2b3o!'), # hedonismbot
+    ('4bo$5bo$4bo$4bo$b2obo$bo!', '3bo$3b2o$3bobo$4obo$o2bobo$ob2o!'), # thinker
+    ('4bo$5bo$4bo$4bo$b2obo$2bo!', '3bo$3b2o$3bobo$4obo$o2bobo$2obo!'), # bored
+    ('4bo$5bo$4bo$4bo$b2obo!', '3bo$3b2o$3bobo$4obo$o2bobo$b2o!'), # jordan
+    ('4bo$5bo$4bo$4bo$b2o$3bo!', '3bo$3b2o$3bobo$4obo$o2b2o$b2o!'), # triskelion
+    ('$4bo$4b2o2$ob2o$2bo!', '3b3o$3bobo$3bo$6o$bo2bo$bob2o!'), # boulders
+    ('$4bo$4bo$5bo$ob2o$2bo!', '3b2o$3bobo$3bobo$5o$bo2bo$bob2o!'), # waiter
 ]
 
 TRANSFORMATIONS = [
