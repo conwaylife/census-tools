@@ -140,7 +140,7 @@ def get_patterns():
     for row in csv.reader(census):
         if row[0] == 'apgcode':
             continue
-        patterns.append(row[0])
+        patterns.append(row)
     census.close()
     return patterns
 
@@ -148,7 +148,7 @@ targets = []
 for t in TARGETS:
     targets.append((decode_rle(t[0]), decode_rle(t[1])))
 
-for pattern in get_patterns():
+for pattern, freq in get_patterns():
     if pattern[:2] != 'xs':
         continue
 
@@ -157,7 +157,7 @@ for pattern in get_patterns():
         p = transform_pattern(decoded, 0, 0, *t)
         for target in targets:
             if match_pattern(p, *target):
-                print(pattern)
+                print(pattern + " " + freq)
                 break
         else:
             continue
